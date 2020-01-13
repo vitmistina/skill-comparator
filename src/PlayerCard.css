@@ -1,0 +1,11 @@
+.PlayerCard {
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #ffffff99;
+  background-color: #ffffff55;
+  cursor: pointer;
+}
+
+.PlayerCard:hover {
+  background-color: #ffffff88;
+}
