@@ -24,14 +24,17 @@ class App extends Component {
         getEloById(player2.id),
         player1.id === event.target.dataset.id ? 1 : 0
       );
+      const getUpdatedPlayer = (player, playerId, skillId, newElo) =>
+        player.id === playerId
+          ? { ...player, elo: { ...player.elo, [skillId]: newElo } }
+          : null;
       this.setState({
-        players: this.state.players.map(player => {
-          if (player.id === player1.id)
-            return { ...player, elo: { ...player.elo, [skill.id]: newElo1 } };
-          if (player.id === player2.id)
-            return { ...player, elo: { ...player.elo, [skill.id]: newElo2 } };
-          return player;
-        })
+        players: this.state.players.map(
+          player =>
+            getUpdatedPlayer(player, player1.id, skill.id, newElo1) ||
+            getUpdatedPlayer(player, player2.id, skill.id, newElo2) ||
+            player
+        )
       });
     };
     return (
