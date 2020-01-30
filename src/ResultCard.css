@@ -1,0 +1,32 @@
+.cardImageDiv {
+  width: 150px;
+  height: 150px;
+  margin: auto auto;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+}
+
+.cardText {
+  height: 80px;
+  padding: 10px;
+  text-align: center;
+}
+
+.cardButton {
+  margin: auto auto;
+}
+
+.btnResult {
+  width: 155px;
+}
+
+.result {
+  border: 1px solid;
+  border-color: darkgrey;
+  border-radius: 2%;
+  display: grid;
+  padding: 10px;
+}

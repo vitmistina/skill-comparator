@@ -5,6 +5,7 @@ import PlayerCard from "./PlayerCard";
 import { recalculateElo } from "./helper";
 import { getPlayers } from "./data";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   skillSelectionStrategy = new SkillSelectionRandom();
