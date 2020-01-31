@@ -1,0 +1,6 @@
+.comparatorGrid {
+  display: grid;
+  border: solid 2px red;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}

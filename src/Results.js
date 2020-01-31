@@ -23,6 +23,16 @@ class Results extends Component {
           descriptionText="Here you can see the result by skills"
           buttonText="Skills"
         />
+        <ResultCard
+          imgCard="/images/questionsCategories.png"
+          descriptionText="Here you can see the result by the question's categories"
+          buttonText="Categories"
+        />
+        <ResultCard
+          imgCard="/images/userCategories.png"
+          descriptionText="Here you can see the result by the person's categories"
+          buttonText="Categories by person"
+        />
       </div>
     );
   }
