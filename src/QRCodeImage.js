@@ -15,9 +15,6 @@ class QRCodeImage extends React.Component {
     QRCode.toDataURL(window.location.href, { margin: 1 })
       .then(url => {
         this.setState({ qrCodeImage: url });
-
-        console.log("success");
-        console.log(url);
       })
       .catch(err => {
         console.error(err);
@@ -25,9 +22,6 @@ class QRCodeImage extends React.Component {
   }
 
   render() {
-    console.log("----");
-    console.log(this.state.qrCodeImage);
-
     return (
       <div className="qrcode">
         <img src={this.state.qrCodeImage} alt={this.qrCodeDataRef.current} />
