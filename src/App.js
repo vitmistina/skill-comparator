@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import SkillSelectionRandom from "./SkillSelectionRandom";
 import MatchMakingRandom from "./MatchMakingRandom";
-import PlayerCard from "./PlayerCard";
+import Categorie from "./Categorie";
 import { recalculateElo } from "./helper";
 import { getPlayers } from "./data";
+import Button from "react-bootstrap/Button";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -39,21 +40,19 @@ class App extends Component {
       });
     };
     return (
-      <div className="App">
-        <div className="center-container">
-          <h2>{skill.question}</h2>
-          <PlayerCard player={player1} id={1} handleWinner={handleWinner} />
-          <PlayerCard player={player2} id={2} handleWinner={handleWinner} />
-          <button onClick={() => this.forceUpdate()}>I don't know</button>
-          <ul>
-            {this.state.players
-              .sort((a, b) => (a.elo.javascript > b.elo.javascript ? -1 : 1))
-              .map(player => (
-                <li key={player.id}>
-                  {player.name} {player.elo.javascript}
-                </li>
-              ))}
-          </ul>
+      <div className="app">
+        <div className="appGrid">
+          <h2 className="display-4">{skill.question}</h2>
+          <div className="categoriesGrid">
+            {Object.keys(skill.categories).map(key => (
+              <Categorie name={skill.categories[key]} />
+            ))}
+          </div>
+          <div className="playersButtons">
+            <Button variant="outline-dark">{player1.name}</Button>
+            <Button variant="outline-warning">I don't know</Button>
+            <Button variant="outline-dark">{player2.name}</Button>
+          </div>
         </div>
       </div>
     );

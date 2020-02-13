@@ -1,6 +1,38 @@
 export default class SkillSelectionRandom {
-  getSkill = () => ({
-    id: "javascript",
-    question: "Who is better at javascriptte?"
-  });
+  getSkill = () => {
+    let skills = [
+      {
+        id: 1,
+        question: "Who is better at javascriptte?",
+        categories: ["skills", "programming", "technical"]
+      },
+      {
+        id: 2,
+        question: "Who would you ask a question about data?",
+        categories: ["skills", "data", "technical"]
+      },
+      {
+        id: 3,
+        question:
+          "In a arena, who writes the fastest C# algorithm for sorting wins. Who you bet for?",
+        categories: ["skills", "programming", "technical"]
+      },
+      {
+        id: 4,
+        question: "Who facilitates better?",
+        categories: ["domains", "meetings", "facilitation", "scrum"]
+      },
+      {
+        id: 5,
+        question: "Who would you ask for help for managment in a new project?",
+        categories: ["domains", "managment"]
+      }
+    ];
+
+    return skills[this.randomNumber(skills.length)];
+  };
+
+  randomNumber = limit => {
+    return Math.floor(Math.random() * limit);
+  };
 }

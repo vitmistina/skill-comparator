@@ -8,30 +8,24 @@ import QRCodeImage from "./QRCodeImage";
 class LiveComparator extends Component {
   render() {
     return (
-      <div className="comparatorGrid">
-        <div className="area"></div>
-        <div className="area">
+      <div className="liveComparatorGrid">
+        <div className="comparatorGrid">
           <div className="playersDiv">
-            <div>Waiting for players</div>
-            <div>Players: 9</div>
+            <h2 className="display-4">Waiting for players</h2>
+            <h5>Players online: 9</h5>
           </div>
-        </div>
-        <div className="area"></div>
-        <div className="area"></div>
-        <div className="area">
           <div className="qrCodeOutside">
-            <div className="qrCodeInside">
-              <QRCodeImage/>
-            </div>          
-            <h5>Scan to play</h5>  
+            <QRCodeImage />
+          </div>
+          <div className="area">
+            {/* <ProgressBar
+              now={70}
+              animated="true"
+              label="70%"
+              className="progressBar"
+            /> */}
           </div>
         </div>
-        <div className="area"></div>
-        <div className="area"></div>
-        <div className="area">
-          <ProgressBar now={70} label="70%" className="progressBar"/>
-        </div>
-        <div className="area"></div>
       </div>
     );
   }

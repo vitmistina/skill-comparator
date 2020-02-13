@@ -1,0 +1,48 @@
+.hashtag {
+  color: black;
+}
+
+.cat1 {
+  color: green;
+}
+
+.cat2 {
+  color: coral;
+}
+
+.cat3 {
+  color: brown;
+}
+
+.cat4 {
+  color: gold;
+}
+
+.cat5 {
+  color: pink;
+}
+
+.cat6 {
+  color: darkcyan;
+}
+
+.cat7 {
+  color: indigo;
+}
+
+.cat8 {
+  color: teal;
+}
+
+.cat9 {
+  color: sienna;
+}
+
+.cat10 {
+  color: red;
+}
+
+.categorie {
+  padding: 3px;
+  background-color: white;
+}
