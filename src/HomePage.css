@@ -1,0 +1,20 @@
+.mainGrid {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  grid-template-rows: 100px 1fr 200px;
+
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.carouselItem {
+  width: 800px;
+  height: 400px;
+}
+
+.welcomeItem {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}

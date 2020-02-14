@@ -4,13 +4,15 @@ import App from "./App";
 import NotFound from "./NotFound";
 import Results from "./Results";
 import LiveComparator from "./LiveComparator";
+import HomePage from "./HomePage";
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/results/:Id" render={props => <Results {...props} />} />
       <Route path="/live/:Id" render={props => <LiveComparator {...props} />} />
-      <Route exact path="/" component={App} />
+      <Route path="/questions/:Id" render={props => <App {...props} />} />
+      <Route exact path="/" component={HomePage} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
