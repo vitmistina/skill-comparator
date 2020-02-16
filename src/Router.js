@@ -5,6 +5,7 @@ import NotFound from "./NotFound";
 import Results from "./Results";
 import LiveComparator from "./LiveComparator";
 import HomePage from "./HomePage";
+import QuestionsMenu from "./QuestionsMenu";
 
 const Router = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const Router = () => (
       <Route path="/results/:Id" render={props => <Results {...props} />} />
       <Route path="/live/:Id" render={props => <LiveComparator {...props} />} />
       <Route path="/questions/:Id" render={props => <App {...props} />} />
+      <Route path="/new/" render={props => <QuestionsMenu {...props} />} />
       <Route exact path="/" component={HomePage} />
       <Route component={NotFound} />
     </Switch>

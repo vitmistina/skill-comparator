@@ -1,0 +1,15 @@
+.questionsMainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 500px;
+}
+
+.questionsGrid {
+  display: grid;
+  background-color: brown;
+}
+
+.newQuestionGrid {
+  display: grid;
+  background-color: black;
+}

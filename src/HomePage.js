@@ -14,7 +14,7 @@ class HomePage extends React.Component {
   };
 
   goToStart = () => {
-    this.props.history.push(`/questions/123`);
+    this.props.history.push(`/new/`);
   };
 
   render() {
