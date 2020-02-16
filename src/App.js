@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SkillSelectionRandom from "./SkillSelectionRandom";
+import DummyData from "./DummyData";
 import MatchMakingRandom from "./MatchMakingRandom";
 import Categorie from "./Categorie";
 import { recalculateElo } from "./helper";
@@ -9,14 +9,14 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
-  skillSelectionStrategy = new SkillSelectionRandom();
+  dummyData = new DummyData();
   matchMakingStrategy = new MatchMakingRandom(getPlayers());
   state = {
     matchHistory: {},
     players: getPlayers()
   };
   render() {
-    const skill = this.skillSelectionStrategy.getSkill();
+    const skill = this.dummyData.getRandomQuestion();
     const { player1, player2 } = this.matchMakingStrategy.getPlayers();
     const handleWinner = event => {
       const getEloById = playerId =>
@@ -49,9 +49,22 @@ class App extends Component {
             ))}
           </div>
           <div className="playersButtons">
-            <Button variant="outline-dark">{player1.name}</Button>
-            <Button variant="outline-warning">I don't know</Button>
-            <Button variant="outline-dark">{player2.name}</Button>
+            <Button
+              variant="outline-dark"
+              data-id={player1.id}
+              onClick={handleWinner}
+            >
+              {player1.name}
+            </Button>
+            <Button
+              variant="outline-warning"
+              onClick={() => this.forceUpdate()}
+            >
+              I don't know
+            </Button>
+            <Button variant="outline-dark" onClick={handleWinner}>
+              {player2.name}
+            </Button>
           </div>
         </div>
       </div>
