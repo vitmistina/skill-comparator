@@ -1,6 +1,7 @@
 import React from "react";
 import QRCode from "qrcode";
 import "./Question.css";
+import Categorie from "./Categorie";
 
 class Question extends React.Component {
   constructor(props) {
@@ -16,7 +17,12 @@ class Question extends React.Component {
     return (
       <div className="question1">
         <div>Question: {this.props.question.question}</div>
-        <div>Categories: #csharp #programming #tech </div>
+        <div>
+          Categories:
+          {Object.keys(this.props.question.categories).map(key => (
+            <Categorie name={this.props.question.categories[key]} />
+          ))}
+        </div>
       </div>
     );
   }
