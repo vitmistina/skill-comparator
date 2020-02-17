@@ -1,7 +1,7 @@
 .questionsMainGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 500px;
+  grid-template-rows: 500px 1fr;
 }
 
 .questionsGrid {
@@ -12,4 +12,14 @@
 .newQuestionGrid {
   display: grid;
   background-color: black;
+}
+
+.startComparisson {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  background-color: burlywood;
 }

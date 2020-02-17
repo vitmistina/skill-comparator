@@ -1,6 +1,9 @@
 import React from "react";
 import Question from "./Question";
+import Button from "react-bootstrap/Button";
 import "./QuestionsMenu.css";
+import uuidv1 from "uuid";
+import DummyData from "./DummyData";
 
 class QuestionsMenu extends React.Component {
   constructor(props) {
@@ -9,19 +12,17 @@ class QuestionsMenu extends React.Component {
   }
 
   state = {
-    questions: [
-      {
-        id: 1,
-        question: "Who is better at javascriptte?",
-        categories: ["skills", "programming", "technical"]
-      },
-      {
-        id: 2,
-        question: "Who would you question about javaaaa?",
-        categories: ["skills", "technical"]
-      }
-    ]
+    questions: {}
   };
+
+  componentDidMount() {
+    const dummyData = new DummyData();
+    const allQuestions = dummyData.getAllQuestions();
+
+    const stateData = { ...this.state.questions };
+
+    this.setState({ questions: allQuestions });
+  }
 
   addQuestion = () => {
     this.props.history.push(`/questions/123`);
@@ -29,6 +30,11 @@ class QuestionsMenu extends React.Component {
 
   removeQuestion = () => {
     this.props.history.push(`/questions/123`);
+  };
+
+  startComparison = () => {
+    const newId = uuidv1();
+    this.props.history.push("/questions/" + newId);
   };
 
   render() {
@@ -40,6 +46,11 @@ class QuestionsMenu extends React.Component {
           ))}
         </div>
         <div className="newQuestionGrid"></div>
+        <div className="startComparisson">
+          <Button onClick={this.startComparison} variant="outline-success">
+            Start comparison!
+          </Button>
+        </div>
       </div>
     );
   }

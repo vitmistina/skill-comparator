@@ -1,6 +1,6 @@
-export default class SkillSelectionRandom {
-  getSkill = () => {
-    let skills = [
+export default class DummyData {
+  getAllQuestions = () => {
+    let questions = [
       {
         id: 1,
         question: "Who is better at javascriptte?",
@@ -29,7 +29,13 @@ export default class SkillSelectionRandom {
       }
     ];
 
-    return skills[this.randomNumber(skills.length)];
+    return questions;
+  };
+
+  getRandomQuestion = () => {
+    let questions = this.getAllQuestions();
+
+    return questions[this.randomNumber(questions.length)];
   };
 
   randomNumber = limit => {
