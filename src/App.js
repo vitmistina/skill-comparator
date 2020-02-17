@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import base from "./base";
 import DummyData from "./DummyData";
 import MatchMakingRandom from "./MatchMakingRandom";
 import Categorie from "./Categorie";
 import EloCalculator from "./EloCalculator";
 import { getPlayers, getTwoPlayers } from "./data";
-import Button from "react-bootstrap/Button";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -30,6 +31,14 @@ class App extends Component {
       const winnerId = event.target.dataset.id;
       this.setState({
         players: eloCalculator.getPlayersWithUpdatedScores(winnerId)
+      });
+      base.post(`${this.props.match.params.Id}/events/${Date.now()}`, {
+        data: {
+          question,
+          player1,
+          player2,
+          winnerId
+        }
       });
     };
     return (
