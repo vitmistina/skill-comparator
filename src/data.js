@@ -28,7 +28,13 @@ const basePlayerData = [
   { id: "vitmistina", name: "Vit Mistina" }
 ];
 
-const getPlayers = () =>
-  basePlayerData.map(player => ({ ...player, elo: { javascript: 1000 } }));
+const twoPlayerData = [
+  { id: "janskola", name: "Jan Skola" },
+  { id: "jankunes", name: "Jan Kunes" }
+];
 
-export { getPlayers };
+const getPlayers = () => basePlayerData.map(player => ({ ...player, elo: {} }));
+const getTwoPlayers = () =>
+  twoPlayerData.map(player => ({ ...player, elo: {} }));
+
+export { getPlayers, getTwoPlayers };
