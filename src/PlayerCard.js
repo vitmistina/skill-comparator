@@ -1,14 +1,15 @@
 import React from "react";
-import "./PlayerCard.css";
+import Button from "react-bootstrap/Button";
 
 const PlayerCard = props => (
-  <div
+  <Button
+    variant="outline-dark"
     className="PlayerCard"
     data-id={props.player.id}
     onClick={props.handleWinner}
   >
     {props.player.name}
-  </div>
+  </Button>
 );
 
 export default PlayerCard;

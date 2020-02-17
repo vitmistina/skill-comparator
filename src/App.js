@@ -7,6 +7,7 @@ import { getPlayers } from "./data";
 import Button from "react-bootstrap/Button";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PlayerCard from "./PlayerCard";
 
 class App extends Component {
   skillSelectionStrategy = new SkillSelectionRandom();
@@ -45,13 +46,13 @@ class App extends Component {
           <h2 className="display-4">{skill.question}</h2>
           <div className="categoriesGrid">
             {Object.keys(skill.categories).map(key => (
-              <Categorie name={skill.categories[key]} />
+              <Categorie name={skill.categories[key]} key={key} />
             ))}
           </div>
           <div className="playersButtons">
-            <Button variant="outline-dark">{player1.name}</Button>
+            <PlayerCard player={player1} handleWinner={handleWinner} />
             <Button variant="outline-warning">I don't know</Button>
-            <Button variant="outline-dark">{player2.name}</Button>
+            <PlayerCard player={player2} handleWinner={handleWinner} />
           </div>
         </div>
       </div>
