@@ -1,8 +1,5 @@
 class EloCalculator {
   constructor({ player1, player2, question, players }) {
-    this.player1 = player1;
-    this.player2 = player2;
-    this.question = question;
     this.players = players;
   }
 
@@ -13,7 +10,7 @@ class EloCalculator {
     return [elo1 + diff, elo2 - diff];
   };
 
-  getPlayersWithUpdatedScores = winnerId => {
+  getPlayersWithUpdatedScores = ({ question, player1, player2, winnerId }) => {
     const getEloByCategory = (playerId, category) =>
       this.players.find(player => player.id === playerId).elo[category] || 1000;
     const getUpdatedPlayer = (player, playerId, skillId, newElo) =>
@@ -21,19 +18,21 @@ class EloCalculator {
         ? { ...player, elo: { ...player.elo, [skillId]: newElo } }
         : null;
 
-    return this.question.categories.reduce((playerArray, category) => {
+    const newPlayers = question.categories.reduce((playerArray, category) => {
       const [newElo1, newElo2] = this.recalculateElo(
-        getEloByCategory(this.player1.id, category),
-        getEloByCategory(this.player2.id, category),
-        this.player1.id === winnerId ? 1 : 0
+        getEloByCategory(player1.id, category),
+        getEloByCategory(player2.id, category),
+        player1.id === winnerId ? 1 : 0
       );
       return playerArray.map(
         player =>
-          getUpdatedPlayer(player, this.player1.id, category, newElo1) ||
-          getUpdatedPlayer(player, this.player2.id, category, newElo2) ||
+          getUpdatedPlayer(player, player1.id, category, newElo1) ||
+          getUpdatedPlayer(player, player2.id, category, newElo2) ||
           player
       );
     }, this.players);
+
+    return newPlayers;
   };
 }
 

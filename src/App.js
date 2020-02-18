@@ -21,24 +21,22 @@ class App extends Component {
     const question = this.questionSelectionStrategy.getRandomQuestion();
     const { player1, player2 } = this.matchMakingStrategy.getPlayers();
     const eloCalculator = new EloCalculator({
-      players: this.state.players,
-      question,
-      player1,
-      player2
+      players: this.state.players
     });
 
     const handleWinner = event => {
       const winnerId = event.target.dataset.id;
+      const data = {
+        question,
+        player1,
+        player2,
+        winnerId
+      };
       this.setState({
-        players: eloCalculator.getPlayersWithUpdatedScores(winnerId)
+        players: eloCalculator.getPlayersWithUpdatedScores(data)
       });
       base.post(`${this.props.match.params.Id}/events/${Date.now()}`, {
-        data: {
-          question,
-          player1,
-          player2,
-          winnerId
-        }
+        data
       });
     };
     return (
