@@ -41,4 +41,13 @@ export default class DummyData {
   randomNumber = limit => {
     return Math.floor(Math.random() * limit);
   };
+
+  getCategories = () => {
+    const categories = this.getAllQuestions().reduce(
+      (categories, question) => [...categories, ...question.categories],
+      []
+    );
+
+    return Array.from(new Set(categories));
+  };
 }

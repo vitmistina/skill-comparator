@@ -14,7 +14,6 @@ class App extends Component {
   questionSelectionStrategy = new DummyData();
   matchMakingStrategy = new MatchMakingRandom(this.players);
   state = {
-    matchHistory: {},
     players: this.players
   };
   render() {
