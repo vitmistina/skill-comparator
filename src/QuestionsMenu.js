@@ -1,6 +1,8 @@
 import React from "react";
 import Question from "./Question";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
 import "./QuestionsMenu.css";
 import uuidv1 from "uuid";
 import DummyData from "./DummyData";
@@ -45,7 +47,33 @@ class QuestionsMenu extends React.Component {
             <Question question={this.state.questions[key]} />
           ))}
         </div>
-        <div className="newQuestionGrid"></div>
+        <div className="newQuestionGrid">
+          <Form>
+            <Form.Group controlId="formNewQUestion">
+              <Form.Label>Question</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Who makes the best hot dog?"
+              />
+              <Form.Text className="text-muted">
+                Try to be clear and straight to the point.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group controlId="formNewQUestion">
+              <Form.Label>Categories</Form.Label>
+              <Form.Control type="text" placeholder="food, bread, sausage" />
+              <Form.Text className="text-muted">
+                The categories are important to classify the answers after the
+                comparison
+              </Form.Text>
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Save
+            </Button>
+          </Form>
+        </div>
         <div className="startComparisson">
           <Button onClick={this.startComparison} variant="outline-success">
             Start comparison!

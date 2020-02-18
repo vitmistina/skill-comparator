@@ -1,17 +1,19 @@
 .questionsMainGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 500px 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: Auto 1fr;
+  padding: 20px;
 }
 
 .questionsGrid {
   display: grid;
-  background-color: brown;
+  row-gap: 20px;
+  padding: 10px;
 }
 
 .newQuestionGrid {
   display: grid;
-  background-color: black;
+  padding: 10px;
 }
 
 .startComparisson {
@@ -21,5 +23,4 @@
   justify-items: center;
   align-items: center;
   align-content: center;
-  background-color: burlywood;
 }
