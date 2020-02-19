@@ -10,11 +10,8 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
-  players = getPlayers();
-  questionSelectionStrategy = new DummyData();
-  matchMakingStrategy = new MatchMakingRandom(this.players);
   state = {
-    players: this.players,
+    players: [],
     question: {}
   };
   componentDidMount() {
@@ -24,6 +21,11 @@ class App extends Component {
         base.bindToState(`${uid}/question`, {
           context: this,
           state: "question"
+        }),
+        base.bindToState(`${uid}/players`, {
+          context: this,
+          state: "players",
+          asArray: true
         })
       ];
     }
@@ -34,7 +36,15 @@ class App extends Component {
   }
   render() {
     const question = this.state.question;
-    const { player1, player2 } = this.matchMakingStrategy.getPlayers();
+    if (
+      Object.entries(question).length === 0 ||
+      !question.categories ||
+      !this.state.players ||
+      this.state.players.length === 0
+    )
+      return <h1>Loading...</h1>;
+    const matchMakingStrategy = new MatchMakingRandom(this.state.players);
+    const { player1, player2 } = matchMakingStrategy.getPlayers();
     const eloCalculator = new EloCalculator({
       players: this.state.players
     });
@@ -54,8 +64,7 @@ class App extends Component {
         data
       });
     };
-    if (Object.entries(question).length === 0 || !question.categories)
-      return <h1>Loading...</h1>;
+
     return (
       <div className="app">
         <div className="appGrid">
