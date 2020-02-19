@@ -1,4 +1,6 @@
 export default class DummyData {
+  currentQuestion;
+
   getAllQuestions = () => {
     let questions = [
       {
@@ -50,4 +52,15 @@ export default class DummyData {
 
     return Array.from(new Set(categories));
   };
+
+  getNextQuestion() {
+    const questions = this.getAllQuestions();
+    if (
+      this.currentQuestion == undefined ||
+      this.currentQuestion + 1 == questions.length
+    )
+      this.currentQuestion = 0;
+    else this.currentQuestion += 1;
+    return questions[this.currentQuestion];
+  }
 }

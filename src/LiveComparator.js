@@ -17,21 +17,32 @@ class LiveComparator extends Component {
     events: [],
     players: this.players,
     categories: this.questionSelectionStrategy.getCategories(),
+    question: {},
     lastProcessedEvent: ""
   };
   componentDidMount() {
     const uid = this.props.match.params.Id;
     if (uid) {
-      this.ref = base.bindToState(`${uid}/events`, {
-        context: this,
-        asArray: true,
-        state: "events"
-      });
+      this.refs = [
+        base.bindToState(`${uid}/events`, {
+          context: this,
+          asArray: true,
+          state: "events"
+        }),
+        base.syncState(`${uid}/question`, {
+          context: this,
+          state: "question"
+        })
+      ];
+      if (Object.entries(this.state.question).length === 0)
+        this.setState({
+          question: this.questionSelectionStrategy.getNextQuestion()
+        });
     }
   }
 
   componentWillUnmount() {
-    base.removeBinding(this.ref);
+    this.refs.forEach(ref => base.removeBinding(ref));
   }
 
   render() {
@@ -49,9 +60,17 @@ class LiveComparator extends Component {
         <div className="comparatorGrid">
           <div className="playersDiv">
             <h2 className="display-4">Peer assessment in progress</h2>
-            <h5>
-              Current question: kkkkk <Button>Next question</Button>
-            </h5>
+
+            <h5>Current question: {this.state.question.question} </h5>
+            <Button
+              onClick={() => {
+                this.setState({
+                  question: this.questionSelectionStrategy.getNextQuestion()
+                });
+              }}
+            >
+              Next question
+            </Button>
           </div>
           <div className="area">
             <div

@@ -14,10 +14,26 @@ class App extends Component {
   questionSelectionStrategy = new DummyData();
   matchMakingStrategy = new MatchMakingRandom(this.players);
   state = {
-    players: this.players
+    players: this.players,
+    question: {}
   };
+  componentDidMount() {
+    const uid = this.props.match.params.Id;
+    if (uid) {
+      this.refs = [
+        base.bindToState(`${uid}/question`, {
+          context: this,
+          state: "question"
+        })
+      ];
+    }
+  }
+
+  componentWillUnmount() {
+    this.refs.forEach(ref => base.removeBinding(ref));
+  }
   render() {
-    const question = this.questionSelectionStrategy.getRandomQuestion();
+    const question = this.state.question;
     const { player1, player2 } = this.matchMakingStrategy.getPlayers();
     const eloCalculator = new EloCalculator({
       players: this.state.players
@@ -38,6 +54,7 @@ class App extends Component {
         data
       });
     };
+    if (Object.entries(question).length === 0) return <h1>Loading...</h1>;
     return (
       <div className="app">
         <div className="appGrid">
