@@ -12,9 +12,9 @@ class QRCodeImage extends React.Component {
   };
 
   componentDidMount() {
-    QRCode.toDataURL(window.location.href, { margin: 1 })
-      .then(url => {
-        this.setState({ qrCodeImage: url });
+    QRCode.toDataURL(this.props.url, { margin: 1 })
+      .then(qrData => {
+        this.setState({ qrCodeImage: qrData });
       })
       .catch(err => {
         console.error(err);

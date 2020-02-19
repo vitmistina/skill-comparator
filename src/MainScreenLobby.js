@@ -12,10 +12,11 @@ class MainScreenLobby extends Component {
         <div className="comparatorGrid">
           <div className="playersDiv">
             <h2 className="display-4">Waiting for players</h2>
-            <h5>Players online: 9</h5>
           </div>
           <div className="qrCodeOutside">
-            <QRCodeImage />
+            <QRCodeImage
+              url={`${window.location.origin}/questions/${this.props.match.params.Id}`}
+            />
           </div>
           <div className="area">
             {/* <ProgressBar
