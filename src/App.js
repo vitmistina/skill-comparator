@@ -54,7 +54,8 @@ class App extends Component {
         data
       });
     };
-    if (Object.entries(question).length === 0) return <h1>Loading...</h1>;
+    if (Object.entries(question).length === 0 || !question.categories)
+      return <h1>Loading...</h1>;
     return (
       <div className="app">
         <div className="appGrid">
