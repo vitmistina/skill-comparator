@@ -10,7 +10,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
-  players = getTwoPlayers();
+  players = getPlayers();
   questionSelectionStrategy = new DummyData();
   matchMakingStrategy = new MatchMakingRandom(this.players);
   state = {

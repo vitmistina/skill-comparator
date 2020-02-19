@@ -8,12 +8,13 @@ import { getPlayers, getTwoPlayers } from "./data";
 import "./LiveComparator.css";
 import QRCodeImage from "./QRCodeImage";
 import ScoresColumn from "./ScoresColumn";
+import EloCalculator from "./EloCalculator";
 
 class LiveComparator extends Component {
-  players = getTwoPlayers();
+  players = getPlayers();
   questionSelectionStrategy = new DummyData();
   state = {
-    events: {},
+    events: [],
     players: this.players,
     categories: this.questionSelectionStrategy.getCategories(),
     lastProcessedEvent: ""
@@ -21,8 +22,9 @@ class LiveComparator extends Component {
   componentDidMount() {
     const uid = this.props.match.params.Id;
     if (uid) {
-      this.ref = base.syncState(`${uid}/events`, {
+      this.ref = base.bindToState(`${uid}/events`, {
         context: this,
+        asArray: true,
         state: "events"
       });
     }
@@ -33,11 +35,20 @@ class LiveComparator extends Component {
   }
 
   render() {
+    const eloCalculator = new EloCalculator({
+      players: this.state.players
+    });
+    const handleWinner = data => {
+      const updatedPlayers = eloCalculator.getPlayersWithUpdatedScores(data);
+      eloCalculator.setPlayers(updatedPlayers);
+    };
+    this.state.events.forEach(handleWinner);
+    const players = eloCalculator.getPlayers();
     return (
       <div className="liveComparatorGrid">
         <div className="comparatorGrid">
           <div className="playersDiv">
-            <h2 className="display-4">Game in progress</h2>
+            <h2 className="display-4">Peer assessment in progress</h2>
             <h5>
               Current question: kkkkk <Button>Next question</Button>
             </h5>
@@ -46,12 +57,16 @@ class LiveComparator extends Component {
             <div
               style={{
                 display: "grid",
-                "grid-template-columns": `repeat(${this.state.categories
-                  .length + 1},1fr)`
+                "grid-gap": "8px",
+                "grid-template-columns": `repeat(${this.state.categories.length},1fr)`
               }}
             >
-              {this.state.categories.map(val => (
-                <ScoresColumn key={val} name={val} players={this.players} />
+              {this.state.categories.map(category => (
+                <ScoresColumn
+                  key={category}
+                  category={category}
+                  players={players}
+                />
               ))}
             </div>
           </div>

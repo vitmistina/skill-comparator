@@ -1,6 +1,14 @@
 class EloCalculator {
-  constructor({ player1, player2, question, players }) {
+  constructor({ players }) {
     this.players = players;
+  }
+
+  setPlayers(players) {
+    this.players = players;
+  }
+
+  getPlayers() {
+    return this.players;
   }
 
   recalculateElo = (elo1, elo2, result1) => {
