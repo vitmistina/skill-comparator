@@ -76,8 +76,8 @@ class LiveComparator extends Component {
             <div
               style={{
                 display: "grid",
-                "grid-gap": "8px",
-                "grid-template-columns": `repeat(${this.state.categories.length},1fr)`
+                gridGap: "8px",
+                gridTemplateColumns: `repeat(${this.state.categories.length},1fr)`
               }}
             >
               {this.state.categories.map(category => (

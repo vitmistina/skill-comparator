@@ -49,12 +49,12 @@ const ScoresColumn = props => {
       {players.map(player => {
         const elo = player.elo[category];
         return (
-          <React.Fragment>
+          <React.Fragment key={player.id}>
             <span>{player.name}</span>
             <span
               className="score"
               style={{
-                "background-color": palette(elo || 1000),
+                backgroundColor: palette(elo || 1000),
                 color: elo > max - (max - min) / 3 ? "#ededed" : "#444444"
               }}
             >

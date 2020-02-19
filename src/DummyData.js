@@ -56,8 +56,8 @@ export default class DummyData {
   getNextQuestion() {
     const questions = this.getAllQuestions();
     if (
-      this.currentQuestion == undefined ||
-      this.currentQuestion + 1 == questions.length
+      this.currentQuestion === undefined ||
+      this.currentQuestion + 1 === questions.length
     )
       this.currentQuestion = 0;
     else this.currentQuestion += 1;
