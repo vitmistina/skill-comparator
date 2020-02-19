@@ -1,31 +1,18 @@
 const basePlayerData = [
-  { id: "janskola", name: "Jan Skola" },
-  { id: "jankunes", name: "Jan Kunes" },
+  { id: "Andrey", name: "Andrey" },
+  { id: "Lucas", name: "Lucas" },
   {
-    id: "martinnovotny",
-    name: "Martin Novotny"
+    id: "Petr",
+    name: "Petr"
   },
-  { id: "eduardofleck", name: "Eduardo Fleck" },
-  { id: "lukasgregora", name: "lukasgregora" },
-  { id: "liborcopak", name: "liborcopak" },
-  { id: "shadracklimbua", name: "shadracklimbua" },
-  { id: "nadabednarova", name: "nadabednarova" },
-  { id: "janberan", name: "janberan" },
-  { id: "adamstepanek", name: "adamstepanek" },
-  { id: "andreydennisyuk", name: "andreydennisyuk" },
-  { id: "miguelmora", name: "miguelmora" },
-  { id: "lucassaito", name: "lucassaito" },
-  { id: "janwdvorak", name: "janwdvorak" },
-  { id: "renatabreznova", name: "renatabreznova" },
-  { id: "gabinahurtova", name: "gabinahurtova" },
-  { id: "petrabartosova", name: "petrabartosova" },
-  { id: "jansuchopar", name: "jansuchopar" },
-  { id: "hana", name: "hana" },
-  { id: "petra", name: "petra" },
-  { id: "jaroslavcepelka", name: "jaroslavcepelka" },
-  { id: "veronikablablova", name: "veronikablablova" },
-  { id: "nikola", name: "nikola" },
-  { id: "vitmistina", name: "Vit Mistina" }
+  { id: "Eduardo", name: "Eduardo" },
+  { id: "Shadrack", name: "Shadrack" },
+  { id: "Libor", name: "Libor" },
+  { id: "Miguel", name: "Miguel" },
+  { id: "Honza Š.", name: "Honza Š." },
+  { id: "Vítek", name: "Vítek" },
+  { id: "Naďa", name: "Naďa" },
+  { id: "Adam", name: "Adam" }
 ];
 
 const twoPlayerData = [
