@@ -55,7 +55,7 @@ const ScoresColumn = props => {
               className="score"
               style={{
                 backgroundColor: palette(elo || 1000),
-                color: elo > max - (max - min) / 3 ? "#ededed" : "#444444"
+                color: elo > max - (max - min) / 2 ? "#ededed" : "#444444"
               }}
             >
               {elo || 1000}
