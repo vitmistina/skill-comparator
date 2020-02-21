@@ -19,8 +19,11 @@ class EloCalculator {
   };
 
   getPlayersWithUpdatedScores = ({ question, player1, player2, winnerId }) => {
-    const getEloByCategory = (playerId, category) =>
-      this.players.find(player => player.id === playerId).elo[category] || 1000;
+    const getEloByCategory = (playerId, category) => {
+      const foundPlayer = this.players.find(player => player.id === playerId);
+      return (foundPlayer.elo && foundPlayer.elo[category]) || 1000;
+    };
+
     const getUpdatedPlayer = (player, playerId, skillId, newElo) =>
       player.id === playerId
         ? { ...player, elo: { ...player.elo, [skillId]: newElo } }
