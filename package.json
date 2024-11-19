@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
     "d3-scale": "^3.2.1",
-    "firebase": "^7.8.2",
+    "firebase": "^10.9.0",
     "qrcode": "^1.4.4",
     "re-base": "^4.0.0",
     "react": "^16.12.0",
